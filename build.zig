@@ -24,6 +24,17 @@ pub fn build(b: *std.Build) void {
         .optimize = optimize,
     });
 
+    exe.addSystemIncludePath("/usr/lib/freetype2");
+
+    exe.linkSystemLibrary("X11");
+    exe.linkSystemLibrary("X11-xcb");
+    exe.linkSystemLibrary("xcb");
+    exe.linkSystemLibrary("xcb-res");
+    exe.linkSystemLibrary("Xft");
+    exe.linkSystemLibrary("Xinerama");
+    exe.linkSystemLibrary("fontconfig");
+    exe.linkLibC();
+
     // This declares intent for the executable to be installed into the
     // standard location when the user invokes the "install" step (the default
     // step when running `zig build`).
